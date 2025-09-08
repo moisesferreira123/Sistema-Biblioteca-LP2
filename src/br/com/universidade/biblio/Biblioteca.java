@@ -4,10 +4,12 @@ import br.com.universidade.biblio.Usuario;
 import br.com.universidade.biblio.Livro;
 import br.com.universidade.biblio.Emprestimo;
 
+import java.util.ArrayList;
+
 public class Biblioteca {
-    private Usuario[] usuarios;
-    private Livro[] livros;
-    private Emprestimo[] emprestimos;
+    private ArrayList<Usuario> usuarios = new ArrayList<>();
+    private ArrayList<Livro> livros = new ArrayList<>();
+    private ArrayList<Emprestimo> emprestimos = new ArrayList<>();
 
     public Emprestimo registrarEmprestimo(Usuario u, Livro l) {
 
