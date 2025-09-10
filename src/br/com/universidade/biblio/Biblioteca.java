@@ -8,8 +8,15 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Biblioteca {
-    private Usuario usuario = new Usuario();
-    private Livro livro = new Livro();
+    private Usuario usuario;
+    private Livro livro;
+    private Util utils;
+
+    public Biblioteca() {
+        this.usuario = new Usuario();
+        this.livro = new Livro();
+        this.utils = new Util();
+    }
 
     public Emprestimo registrarEmprestimo(Usuario u, Livro l, Date dataDeDevolucao) {
         GerenciadorDeDados gd = new GerenciadorDeDados();
@@ -19,13 +26,13 @@ public class Biblioteca {
         //     System.out.println("Usuário inexistente.");
         //     return null;
         // }
-        
+
         // if(gd.consultarLivroBanco() == null) {
         //     System.out.println("Livro inexistente");
         //     return null;
         // }
 
-        if(dataDeDevolucao.before(new Date())) {
+        if(!utils.validarTipoData() || dataDeDevolucao.before(new Date())) {
             System.out.println("Data de devolução inválida. Realize um empréstimo com a data após a data atual.");
             return null;
         }
