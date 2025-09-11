@@ -16,7 +16,7 @@ public class Biblioteca {
     public Biblioteca() {
         this.usuario = new Usuario();
         this.livro = new Livro();
-        this.utils = new Util();
+        this.utils = new Utils();
     }
 
     public Emprestimo registrarEmprestimo(Usuario u, Livro l, Date dataDeDevolucao) {
@@ -38,10 +38,18 @@ public class Biblioteca {
             return null;
         }
 
-        if(!gd.registrarEmprestimoBanco(emprestimo)) {
+        if(!l.isDisponivel) {
+            System.out.println("Falha ao registrar empréstimo. Livro não está disponível no momento.");
+            return null;
+        }
+
+        if(gd.registrarEmprestimoBanco(emprestimo)) {
+            l.setDisponivel(false);
+        } else {
             System.out.println("Falha ao registrar empréstimo.");
             return null;
         }
+
 
         u.adicionarEmprestimo(l);
         return emprestimo;
