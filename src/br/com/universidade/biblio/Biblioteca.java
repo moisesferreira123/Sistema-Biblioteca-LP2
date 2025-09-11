@@ -6,11 +6,12 @@ import br.com.universidade.biblio.Emprestimo;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Biblioteca {
     private Usuario usuario;
     private Livro livro;
-    private Util utils;
+    private Utils utils;
 
     public Biblioteca() {
         this.usuario = new Usuario();
@@ -32,7 +33,7 @@ public class Biblioteca {
         //     return null;
         // }
 
-        if(!utils.validarTipoData() || dataDeDevolucao.before(new Date())) {
+        if(!utils.validarTipoData(dataDeDevolucao) || dataDeDevolucao.before(new Date())) {
             System.out.println("Data de devolução inválida. Realize um empréstimo com a data após a data atual.");
             return null;
         }
@@ -54,7 +55,7 @@ public class Biblioteca {
 
     }
 
-    public ArrayList<Livro> listarLivros() {
+    public List<Livro> listarLivros() {
         
     }
 
@@ -62,7 +63,7 @@ public class Biblioteca {
 
     }
 
-    public ArrayList<Usuario> listarUsuarios() {
+    public List<Usuario> listarUsuarios() {
 
     }
 }
